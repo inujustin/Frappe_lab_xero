@@ -1,0 +1,9 @@
+# Entry point for `docker compose` run from this folder: no flags needed.
+#   docker compose up --build -d
+# The services are defined in docker/compose.yml; versions and passwords come from the two env files.
+include:
+  - path: docker/compose.yml
+    project_directory: docker
+    env_file:
+      - docker/versions.env
+      - docker/.env

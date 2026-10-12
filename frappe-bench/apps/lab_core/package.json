@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "name": "lab_core",
+  "description": "Scripts only: lets `bench build --app lab_core` build the SPA in frontend/. Dependencies live in frontend/package.json.",
+  "scripts": {
+    "dev": "cd frontend && yarn dev",
+    "build": "cd frontend && yarn install --frozen-lockfile --non-interactive && yarn build"
+  }
+}

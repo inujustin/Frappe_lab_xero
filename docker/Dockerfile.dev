@@ -1,0 +1,49 @@
+# Frappe development image. Versions come from docker/versions.env through the compose build args.
+ARG PYTHON_VERSION
+ARG NODE_VERSION
+
+FROM node:${NODE_VERSION}-bookworm-slim AS node
+
+FROM python:${PYTHON_VERSION}-slim-bookworm
+
+ARG BENCH_VERSION
+ARG HOST_UID=1000
+ARG HOST_GID=1000
+# Absolute path of the bench on the host; the container uses the same path (see compose.yml).
+ARG BENCH_DIR
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        git curl build-essential pkg-config \
+        default-libmysqlclient-dev libffi-dev libssl-dev \
+        mariadb-client redis-tools cron wkhtmltopdf \
+    && rm -rf /var/lib/apt/lists/*
+
+# Node from the official image of the same major version, then yarn.
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+RUN ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
+    && ln -s ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx \
+    && npm install -g yarn
+
+RUN pip install --no-cache-dir frappe-bench==${BENCH_VERSION}
+
+# Same uid/gid as the host user, so files written into the bind mount keep the host owner.
+# The env folder is created here so the named volume mounted on it starts owned by frappe.
+RUN groupadd --gid ${HOST_GID} frappe \
+    && useradd --uid ${HOST_UID} --gid ${HOST_GID} --create-home --shell /bin/bash frappe \
+    && mkdir -p ${BENCH_DIR}/env \
+    && chown -R frappe:frappe ${BENCH_DIR}
+
+# First-run setup, then the command (see the script's header).
+COPY --chmod=755 entrypoint.sh /usr/local/bin/lab-entrypoint
+
+USER frappe
+WORKDIR ${BENCH_DIR}
+
+EXPOSE 8000 9000
+
+# The container sets the bench up if needed, then runs Frappe.
+# A plain shell without setup: docker compose ... run --rm frappe bash
+ENTRYPOINT ["lab-entrypoint"]
+CMD ["bench", "start"]

@@ -1,0 +1,92 @@
+# Frappe lab runtime. Everything is set up by `up`: code download, Python environment, site, apps.
+# Run from the project root, through ../compose.yaml (which adds the two env files):
+#   docker compose up --build -d
+name: frappe-lab
+
+x-frappe-build: &frappe-build
+  context: .
+  dockerfile: Dockerfile.dev
+  args:
+    PYTHON_VERSION: ${PYTHON_VERSION}
+    NODE_VERSION: ${NODE_VERSION}
+    BENCH_VERSION: ${BENCH_VERSION}
+    HOST_UID: ${HOST_UID:-1000}
+    HOST_GID: ${HOST_GID:-1000}
+    BENCH_DIR: ${BENCH_DIR:-${PWD}/frappe-bench}
+
+services:
+  # Runs once before frappe: when the bench folder does not exist on the host, Docker creates it
+  # owned by root; this hands it to the host user, so the frappe container can run without root.
+  bench-dir:
+    build: *frappe-build
+    user: root
+    working_dir: ${BENCH_DIR:-${PWD}/frappe-bench}
+    entrypoint:
+      - chown
+      - "${HOST_UID:-1000}:${HOST_GID:-1000}"
+      - "."
+    volumes:
+      - ${BENCH_DIR:-${PWD}/frappe-bench}:${BENCH_DIR:-${PWD}/frappe-bench}
+
+  frappe:
+    build: *frappe-build
+    working_dir: ${BENCH_DIR:-${PWD}/frappe-bench}
+    environment:
+      # Used by docker/entrypoint.sh to download the code and create the site when they are missing.
+      FRAPPE_BRANCH: ${FRAPPE_BRANCH}
+      ERPNEXT_BRANCH: ${ERPNEXT_BRANCH:-}
+      CRM_BRANCH: ${CRM_BRANCH:-}
+      SITE_NAME: ${SITE_NAME:-lab.localhost}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      INSTALL_APPS: ${INSTALL_APPS:-}
+      # 1 = `bench run-tests` is allowed on the site (set at every start).
+      LAB_ALLOW_TESTS: ${LAB_ALLOW_TESTS:-1}
+      # 1 = run only the web server under the debugger (port 5678) instead of `bench start`.
+      LAB_DEBUG: ${LAB_DEBUG:-0}
+    volumes:
+      # The bench is the same folder on the host and in the container, mounted at the SAME absolute
+      # path on both sides: bench writes absolute symbolic links (sites/assets/<app>), and they must
+      # resolve on the host and in the container alike.
+      - ${BENCH_DIR:-${PWD}/frappe-bench}:${BENCH_DIR:-${PWD}/frappe-bench}
+      # The Python environment lives in a volume: it belongs to the container's Python.
+      - bench-env:${BENCH_DIR:-${PWD}/frappe-bench}/env
+    ports:
+      - "${WEB_PORT:-8000}:8000"
+      - "${SOCKETIO_PORT:-9000}:9000"
+      - "127.0.0.1:5678:5678"
+    depends_on:
+      bench-dir:
+        condition: service_completed_successfully
+      mariadb:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+
+  mariadb:
+    image: mariadb:${MARIADB_VERSION}
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis-cache:
+    image: redis:${REDIS_VERSION}
+
+  redis-queue:
+    image: redis:${REDIS_VERSION}
+
+volumes:
+  bench-env:
+  mariadb-data:

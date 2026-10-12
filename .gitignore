@@ -1,0 +1,56 @@
+# ---- Secrets: never commit ----
+.env
+.env.*
+!.env.example
+docker/.env
+*.pem
+*.key
+*.p12
+
+# ---- Private material: stays on this machine, never committed ----
+# The reference handbook of another project, and screenshots (they can show names, emails, accounts).
+/docs/refer/
+/docs/xero/*.png
+/docs/xero/*.jpg
+/docs/xero/*.jpeg
+
+# ---- The bench: ignore everything except our own app ----
+# frappe, erpnext and crm are downloads with their own git history; env/, sites/, logs/ and
+# config/ are machine state (sites/ also holds the site's passwords and uploaded files).
+# A path can only be re-included when its parent folders are not ignored, hence the steps.
+/frappe-bench/*
+!/frappe-bench/apps/
+/frappe-bench/apps/*
+!/frappe-bench/apps/lab_core/
+
+# ---- Inside our app: generated files ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+node_modules/
+.pytest_cache/
+.coverage
+htmlcov/
+frontend/coverage/
+dev-dist/
+# Frontend build output (CRM ignores the same folder in its own app).
+/frappe-bench/apps/lab_core/lab_core/public/frontend/
+# The frontend build also writes this page (frontend/vite.config.mjs copies index.html to it).
+/frappe-bench/apps/lab_core/lab_core/www/lab.html
+
+# ---- Logs and temporary files ----
+*.log
+npm-debug.log*
+yarn-error.log*
+*.tmp
+*.bak
+*.orig
+
+# ---- Local tool and editor state ----
+.claude/settings.local.json
+.agents/.runtime/
+.venv*/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
