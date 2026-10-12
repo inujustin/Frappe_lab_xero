@@ -9,6 +9,25 @@ website_route_rules = [
 	{"from_route": "/lab/<path:app_path>", "to_route": "lab"},
 ]
 
+# Xero demo: configuration lives in code and is applied after every migrate.
+after_migrate = [
+	"lab_core.setup.xero_connection.apply",
+	"lab_core.setup.customizations.apply",
+]
+
+doc_events = {
+	"Sales Order": {
+		"on_submit": "lab_core.overrides.sales_order.on_submit",
+		"on_cancel": "lab_core.overrides.sales_order.on_cancel",
+	},
+}
+
+doctype_js = {"Sales Order": "public/js/sales_order.js"}
+
+scheduler_events = {
+	"cron": {"*/5 * * * *": ["lab_core.tasks.xero_pull.pull_changes"]},
+}
+
 # Apps
 # ------------------
 

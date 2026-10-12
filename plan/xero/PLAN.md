@@ -53,7 +53,7 @@ Ba thứ phải giao:
 | PE. Lỗi và response (tối thiểu) | WAITING (chờ giai đoạn 1) | `errors.py` mới có `LabConflictError`; chưa có hook `after_request` |
 | P4. `@xero_atomic`, SAGA và không SAGA (tối thiểu) | WAITING (chờ giai đoạn 1) | |
 | P3. Mất kết nối (tối thiểu) | WAITING (chờ giai đoạn 1) | |
-| Sau nữa | DEFERRED | kịch bản đăng nhập bằng tài khoản Xero, webhook, sweeper, SAGA bền, deploy |
+| Sau nữa | DEFERRED | **test tự động cho tích hợp** (viết sau demo, không viết và không bảo trì test trong giai đoạn 1 và 2), kịch bản đăng nhập bằng tài khoản Xero, webhook, sweeper, SAGA bền, deploy |
 
 Đường dẫn code trong file này tính từ `frappe-bench/apps/lab_core/lab_core/`. Chỉ cập nhật bảng này khi con người yêu cầu hoặc nói một phase đã xong.
 

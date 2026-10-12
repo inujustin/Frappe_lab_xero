@@ -21,9 +21,3 @@ def get_note(name: str) -> dict:
 def create_note(title: str, content: str = "") -> dict:
 	frappe.has_permission("Lab Note", "create", throw=True)
 	return notes.create_note(title=title, content=content)
-
-
-@frappe.whitelist(methods=["POST"])
-def retry_sync(name: str) -> dict:
-	frappe.has_permission("Lab Note", "write", throw=True)
-	return notes.retry_sync(name)

@@ -233,7 +233,7 @@ Chi tiết ở `../02`; nhắc lại cho đủ:
 
 1. Xero có nhận `client_id`/`client_secret` **trong body** (cách Frappe gửi: `include_client_id=True`, `connected_app.py:227`) hay chỉ nhận HTTP Basic. Chuẩn OAuth yêu cầu server hỗ trợ Basic và cho phép hỗ trợ thêm body [G].
 2. Lời gọi refresh của Frappe kèm một tham số thừa `redirect_uri` (`:159`); Xero bỏ qua hay từ chối.
-3. Xero có nhận redirect URI `http://lab.localhost:8000/…` không (cho `http://localhost` khi phát triển, còn lại đòi `https` [G]).
+3. ~~Xero có nhận redirect URI `http://lab.localhost:8000/…` không.~~ Đã thử ngày 2026-10-12: **không**; Xero chỉ nhận `http` với đúng tên `localhost`. Dùng `http://localhost:8000/…` và làm cả lượt Connect từ một tab mở bằng địa chỉ đó (`../02`).
 4. File lock của Frappe (`:151`) chỉ bảo vệ các worker trên **cùng một máy**; đủ cho lab.
 
 Nếu 1 hoặc 2 là "không": tự viết bước đổi và refresh token trong `integrations/xero/`, vẫn lưu vào Token Cache.

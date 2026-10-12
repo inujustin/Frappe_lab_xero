@@ -157,7 +157,11 @@ Các giá trị hàm setup đặt (các URL là [G]):
 | 4 | **`update_data` tự commit** ([S] `token_cache.py:71`). | Refresh giữa job = commit nửa chừng mọi thứ job đã ghi. | Trong job: **lấy token trước tiên**, rồi mới lock và ghi dòng outbox. |
 
 Hai điều chưa biết, chỉ một lần nối thật mới trả lời:
-- Xero có chấp nhận redirect URI `http://lab.localhost:<port>/…` không. Xero cho `http://localhost` khi phát triển, còn lại đòi HTTPS [G]. Nếu bị từ chối: phương án là truy cập site qua tên `localhost`, hoặc một tunnel HTTPS (đường hầm công khai; cần con người dựng).
+- ~~Xero có chấp nhận redirect URI `http://lab.localhost:<port>/…` không.~~ **Đã có câu trả lời (con người thử ngày 2026-10-12): không.** Form tạo app của Xero báo "Must use https (except localhost which may use http)". Vậy với demo local, redirect URI phải là `http://localhost:8000/api/method/frappe.integrations.doctype.connected_app.connected_app.callback/xero`. Ba hệ quả:
+  1. Frappe phải **tự sinh ra đúng chuỗi đó**: Redirect URI được tính từ URL của site ([S] `connected_app.py:60-65`), nên URL của site phải được đặt thành `http://localhost:8000` rồi bản ghi Connected App được lưu lại (hàm setup làm việc này khi migrate). Chỉ sửa bên Xero là không khớp.
+  2. `http://localhost:8000` phải mở đúng site của lab.
+  3. **Làm cả lượt Connect trong một tab mở bằng `http://localhost:8000`** (đăng nhập Frappe ở đó, rồi bấm Connect). Cookie đăng nhập gắn với tên host: nếu bắt đầu ở `lab.localhost` thì lúc Xero trả về `localhost` bạn là Guest, bị đưa qua trang login, và dễ lệch `state`.
+- **Đã thử ngày 2026-10-12: bước đổi code lấy token chạy được.** Con người bấm Connect, đồng ý bên Xero và được đưa về Frappe không có lỗi (callback của Frappe ném lỗi nếu đổi token hỏng). Vậy Xero nhận cách Frappe gửi credential. Còn chưa thử: lần **refresh** token đầu tiên (sau 30 phút), nơi Frappe gửi kèm tham số thừa `redirect_uri`. Ghi chú gốc:
 - Frappe gửi client credential trong body (`include_client_id=True`, [S] `:227`) trong khi tài liệu Xero mô tả HTTP Basic [G]; và lời gọi refresh kèm thêm `redirect_uri` ([S] `:159`). Xero có nhận cả hai không: thử là biết. Nếu không, phải tự viết bước đổi token trong `integrations/xero/` thay vì dùng Connected App.
 
 ## Tự kiểm tra

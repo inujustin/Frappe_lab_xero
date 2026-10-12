@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "creation": "2026-10-12 12:30:22.145268",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "connected_app",
+  "connected_user",
+  "tenant_id",
+  "tenant_name",
+  "default_account_code",
+  "default_tax_type",
+  "last_pull_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "connected_app",
+   "fieldtype": "Link",
+   "label": "Connected App",
+   "options": "Connected App"
+  },
+  {
+   "fieldname": "connected_user",
+   "fieldtype": "Link",
+   "label": "Connected User",
+   "options": "User"
+  },
+  {
+   "fieldname": "tenant_id",
+   "fieldtype": "Data",
+   "label": "Tenant ID"
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": " Tenant Name"
+  },
+  {
+   "fieldname": "default_account_code",
+   "fieldtype": "Data",
+   "label": " Default Account Code"
+  },
+  {
+   "fieldname": "default_tax_type",
+   "fieldtype": "Data",
+   "label": "Default Tax Type"
+  },
+  {
+   "fieldname": "last_pull_at",
+   "fieldtype": "Datetime",
+   "label": "Last Pull At"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-12 12:35:24.724951",
+ "modified_by": "Administrator",
+ "module": "Lab Xero",
+ "name": "Lab Xero Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

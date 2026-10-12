@@ -10,7 +10,8 @@ Dùng cho **mọi agent** (Codex, Antigravity, Claude…) và cho **một, hai h
 4. **`hooks.py` chỉ làn A được sửa.** Làn khác cần một dòng hook thì ghi dòng đó vào mục "Cần thêm vào hooks.py" trong file làn của mình; làn A áp chúng ở bước A5.
 5. Bị chặn (thiếu DocType, thiếu kết nối Xero, bước phụ thuộc chưa xong): ghi `BLOCKED: <lý do>` vào bước đó, báo trong tóm tắt, dừng. Không lách.
 6. **Giải thích thứ vừa viết.** Con người phải dễ dàng giải thích được code mà mình và AI viết cho tích hợp (không phải code lõi của Frappe). Vì vậy tóm tắt của mỗi bước có thêm mục "Giải thích": với từng file **của ta** vừa viết hoặc sửa, vài dòng bằng lời thường (tiếng Việt): nó làm gì, ai gọi nó, nó gọi ai, phần nào chạy trong transaction và phần nào sau commit, và một chỗ dễ hiểu sai. Không giảng về bên trong Frappe. Code viết sao cho đọc được: tên rõ, hàm ngắn, không mẹo.
-7. Mọi luật của `AGENTS.md` và của `plan/xero/PLAN.md` vẫn giữ nguyên: không test, chỉ Xero thật, không chạy lệnh thuộc vùng của con người, handler gắn vào ERPNext nằm dưới `overrides/`.
+7. **Không test trong giai đoạn này.** Không viết test mới, không sửa hay bảo trì test cũ, không dành công cho chúng. Test tự động là một phase sau demo. Chỉ xóa một file test khi lời nhắc của con người nêu tên nó.
+8. Mọi luật của `AGENTS.md` và của `plan/xero/PLAN.md` vẫn giữ nguyên: không test, chỉ Xero thật, không chạy lệnh thuộc vùng của con người, handler gắn vào ERPNext nằm dưới `overrides/`.
 
 Trạng thái của một bước: `TODO` · `DOING` · `DONE` · `BLOCKED: <lý do>`.
 

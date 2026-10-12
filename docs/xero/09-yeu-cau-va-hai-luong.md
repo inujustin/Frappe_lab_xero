@@ -56,7 +56,7 @@ Mapping (ánh xạ field):
 | `po_no` | `Reference` | |
 | `currency` | `CurrencyCode` | phải được bật trong organisation |
 | `items[].description` / `item_name`, `qty`, `rate` | `LineItems[].Description`, `Quantity`, `UnitAmount` | |
-| — | `LineItems[].AccountCode`, `TaxType` | lấy từ `Lab Xero Settings` (mặc định) cho demo; về sau là bảng mapping |
+| — | `LineItems[].AccountCode`, `TaxType` | lấy từ `Lab Xero Settings` (mặc định) cho demo; về sau là bảng mapping. **Giá trị cho Demo Company (Global), đã xác nhận ngày 2026-10-12** bằng màn hình Chart of accounts và `GET /TaxRates` trong API Explorer: `AccountCode` = `200` (Sales, loại Revenue), `TaxType` = `NONE` ("Tax Exempt", 0%, áp được cho doanh thu, đang ACTIVE) |
 | `grand_total`, `total_taxes_and_charges` | `Total`, `TotalTax` | **không gửi**: trong demo thuế và tổng do Xero tính; bảng thuế và chiết khấu của ERPNext không sang Xero (luật 3 trong `plan/xero/PLAN.md`). Vì vậy đơn demo không có thuế phía ERPNext |
 | `docstatus` 1 | `Status` = `AUTHORISED` | quyết định tạm |
 | `docstatus` 2 (cancel) | `Status` = `VOIDED` | bị Xero chặn nếu đã có payment/credit |
