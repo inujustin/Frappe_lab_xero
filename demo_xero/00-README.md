@@ -2,7 +2,7 @@
 
 Viết ngày 2026-10-12, sau khi luồng chính đã chạy thật với Demo Company của Xero. Thư mục này dùng cho hai việc: **chạy demo** và **giải thích mọi thứ đã xây** (code của ta, database, OAuth, từng lời gọi sang Xero). Nó không giải thích bên trong Frappe; chỗ nào dựa vào Frappe thì nói một dòng "ta dựa vào X" và trích đúng đoạn cần.
 
-Kế hoạch: `plan/xero/PLAN.md`. Kiến thức nền rộng hơn: `docs/xero/`.
+Kế hoạch: `plan/done/xero/PLAN.md`. Kiến thức nền rộng hơn: `docs/xero/`.
 
 ## Đọc theo thứ tự nào
 

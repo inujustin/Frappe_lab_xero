@@ -53,7 +53,7 @@ Vòng 1: hiểu bức tranh (~60 phút)          Vòng 2: hiểu vì sao nó đ�
 | 10 | `10-atomic-va-saga-demo.md` | `@xero_atomic` so với `@Transactional`; demo có SAGA và không SAGA; journal; vì sao không Kafka | 10 |
 | 11 | `11-loi-va-response.md` | "Middleware" xử lý lỗi của Frappe ở đâu; lỗi có tên và status; một chỗ định hình body lỗi cho endpoint của ta; vì sao không catch trong endpoint | 10 |
 
-**Kế hoạch** (làm gì, thứ tự nào, ai làm): `plan/xero/PLAN.md`. `05` là bản một trang của nó.
+**Kế hoạch** (làm gì, thứ tự nào, ai làm): `plan/done/xero/PLAN.md`. `05` là bản một trang của nó.
 
 Nếu chỉ đọc được ba file hôm nay: `09` (đề bài), `02` (kết nối), `05` (việc của bạn).
 

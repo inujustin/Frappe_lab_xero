@@ -1,6 +1,8 @@
-# Kế hoạch chung (để đó từ 2026-10-12)
+# Kế hoạch chung (có hiệu lực trở lại từ 2026-10-13)
 
-Thư mục này giữ **mọi kế hoạch và trạng thái đã có trước khi chuyển sang tập trung vào Xero**: lab học và trace Frappe. Không file nào ở đây đang có hiệu lực; kế hoạch hiện hành là `plan/xero/PLAN.md` (xem `plan/overview.md`). Nội dung các file được giữ nguyên như lúc chuyển vào.
+> **2026-10-13:** đợt Xero đã xong và được lưu trữ ở `plan/done/xero/`. Thư mục này **lại là kế hoạch đang có hiệu lực** (xem `plan/overview.md`). Phần dưới được viết ngày 2026-10-12, lúc thư mục này bị để đó: đọc nó như bản ghi "đã dừng ở đâu". Những chỗ đã cũ và các quyết định còn mở: `plan/overview.md`, mục "Quyết định còn mở".
+
+Thư mục này giữ **mọi kế hoạch và trạng thái đã có trước khi chuyển sang tập trung vào Xero**: lab học và trace Frappe. Lúc viết (2026-10-12), không file nào ở đây có hiệu lực và kế hoạch hiện hành là kế hoạch Xero (nay ở `plan/done/xero/PLAN.md`). Nội dung các file được giữ nguyên như lúc chuyển vào.
 
 ## Có gì ở đây
 
@@ -32,9 +34,9 @@ Chép từ mục "Where we are" của `OVERVIEW.md` và mục "Đang ở đâu" 
 
 Để khi quay lại không làm trùng:
 
-- Outbox và khung job đồng bộ của sprint được giữ làm **nền** của `plan/xero/PLAN.md`.
+- Outbox và khung job đồng bộ của sprint được giữ làm **nền** của `plan/done/xero/PLAN.md`.
 - Client thế chỗ ("Xero giả") của sprint, đường "sync Lab Note sang Xero" và các test dựa vào chúng **bị gỡ** trong kế hoạch Xero (con người chốt ngày 2026-10-12: chỉ Xero thật, không viết test cho demo). Khi quay lại, `SPRINT.md` mô tả thứ không còn trong code.
-- Track K (Xero) của `OVERVIEW.md` chính là `plan/xero/PLAN.md`.
+- Track K (Xero) của `OVERVIEW.md` chính là `plan/done/xero/PLAN.md`.
 - Ý tưởng `@xero_atomic` trong "The Xero transaction idea" được làm ở P4 của kế hoạch Xero.
 
 ## Kế hoạch Xero đã bỏ hoặc đổi gì so với đây
@@ -58,7 +60,7 @@ Con người yêu cầu ngày 2026-10-12: cẩn thận với idempotency (chạy
 | F (realtime), webhook | cùng một event tới hai lần, tới sai thứ tự | bên nhận bỏ được bản trùng; coi event là gợi ý, đọc lại trạng thái |
 | H (mail) | job gửi mail chạy lại | không gửi hai thư cho một việc (Email Queue là ví dụ đáng trace) |
 | J (dữ liệu) | migrate và patch chạy nhiều lần | patch idempotent (AGENTS.md B2); schema chỉ qua migrate |
-| K (Xero) | mọi thứ ở trên, cộng với một hệ thống bên ngoài | đã thành một mục riêng trong `plan/xero/PLAN.md` |
+| K (Xero) | mọi thứ ở trên, cộng với một hệ thống bên ngoài | đã thành một mục riêng trong `plan/done/xero/PLAN.md` |
 
 Kiến thức đã viết: `docs/knowledge/18-non-functional.md` (race, làm hai lần), `20-transaction-handling.md` (luật 4), `12-xero-sync-design.md` (ba lớp chống trùng).
 

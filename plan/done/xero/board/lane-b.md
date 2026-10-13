@@ -1,6 +1,6 @@
 # Làn B: custom field, endpoint, nút trên form (P1)
 
-Luật của bảng: `README.md` cùng thư mục. Kế hoạch: `plan/xero/PLAN.md` (luật 9, 10). Kiến thức: `docs/xero/09`, mục "Giao diện: Desk, không SPA".
+Luật của bảng: `README.md` cùng thư mục. Kế hoạch: `plan/done/xero/PLAN.md` (luật 9, 10). Kiến thức: `docs/xero/09`, mục "Giao diện: Desk, không SPA".
 
 Không đụng `integrations/`, `tasks/`, `lab_xero/`, `overrides/`, `hooks.py`.
 

@@ -4,7 +4,7 @@ File tra cứu: mở khi bắt tay vào một mảnh cụ thể, không cần đ
 
 Nhãn: xem `00-README.md`. Tên field ERPNext là [K]: phiên trước đã xác nhận **sự có mặt** của chúng trong JSON DocType của ERPNext (`erpnext/erpnext/accounts/doctype/sales_invoice/sales_invoice.json`, `sales_invoice_item/…`, `selling/doctype/customer/customer.json`, `accounts/doctype/payment_entry/…`), không kiểm tra kiểu; hôm nay không mở lại. Field Xero là [G].
 
-> Viết trước khi có email đề bài. Mapping ở đây đi từ **Sales Invoice** và **Payment Entry**; đề bài thật đi từ **Sales Order** và chỉ đọc payment/credit note từ Xero. Mapping và custom field cho đề bài: `09` và `plan/xero/PLAN.md`. File này còn giá trị cho phần Customer → Contact, client HTTP, nút Connect, webhook, và cho việc mở rộng về sau.
+> Viết trước khi có email đề bài. Mapping ở đây đi từ **Sales Invoice** và **Payment Entry**; đề bài thật đi từ **Sales Order** và chỉ đọc payment/credit note từ Xero. Mapping và custom field cho đề bài: `09` và `plan/done/xero/PLAN.md`. File này còn giá trị cho phần Customer → Contact, client HTTP, nút Connect, webhook, và cho việc mở rộng về sau.
 
 ## Xero id được lưu ở đâu
 

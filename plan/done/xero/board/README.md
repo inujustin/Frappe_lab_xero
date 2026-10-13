@@ -1,6 +1,8 @@
 # Bảng việc: giai đoạn 1 của kế hoạch Xero
 
-Dùng cho **mọi agent** (Codex, Antigravity, Claude…) và cho **một, hai hoặc ba phiên cùng lúc**. Kế hoạch (làm gì, luật gì) là `plan/xero/PLAN.md`; bảng này chỉ chia việc đó thành các **làn** (lane) không đụng file của nhau, để nhiều phiên chạy song song an toàn.
+> **Đã lưu trữ ngày 2026-10-13.** Bảng này không còn được dùng để chia việc; giữ lại để biết ai đã làm gì. Câu "làm gì bây giờ?" nay trả lời từ `plan/overview.md`.
+
+Dùng cho **mọi agent** (Codex, Antigravity, Claude…) và cho **một, hai hoặc ba phiên cùng lúc**. Kế hoạch (làm gì, luật gì) là `plan/done/xero/PLAN.md`; bảng này chỉ chia việc đó thành các **làn** (lane) không đụng file của nhau, để nhiều phiên chạy song song an toàn.
 
 ## Luật của bảng
 
@@ -11,7 +13,7 @@ Dùng cho **mọi agent** (Codex, Antigravity, Claude…) và cho **một, hai h
 5. Bị chặn (thiếu DocType, thiếu kết nối Xero, bước phụ thuộc chưa xong): ghi `BLOCKED: <lý do>` vào bước đó, báo trong tóm tắt, dừng. Không lách.
 6. **Giải thích thứ vừa viết.** Con người phải dễ dàng giải thích được code mà mình và AI viết cho tích hợp (không phải code lõi của Frappe). Vì vậy tóm tắt của mỗi bước có thêm mục "Giải thích": với từng file **của ta** vừa viết hoặc sửa, vài dòng bằng lời thường (tiếng Việt): nó làm gì, ai gọi nó, nó gọi ai, phần nào chạy trong transaction và phần nào sau commit, và một chỗ dễ hiểu sai. Không giảng về bên trong Frappe. Code viết sao cho đọc được: tên rõ, hàm ngắn, không mẹo.
 7. **Không test trong giai đoạn này.** Không viết test mới, không sửa hay bảo trì test cũ, không dành công cho chúng. Test tự động là một phase sau demo. Chỉ xóa một file test khi lời nhắc của con người nêu tên nó.
-8. Mọi luật của `AGENTS.md` và của `plan/xero/PLAN.md` vẫn giữ nguyên: không test, chỉ Xero thật, không chạy lệnh thuộc vùng của con người, handler gắn vào ERPNext nằm dưới `overrides/`.
+8. Mọi luật của `AGENTS.md` và của `plan/done/xero/PLAN.md` vẫn giữ nguyên: không test, chỉ Xero thật, không chạy lệnh thuộc vùng của con người, handler gắn vào ERPNext nằm dưới `overrides/`.
 
 Trạng thái của một bước: `TODO` · `DOING` · `DONE` · `BLOCKED: <lý do>`.
 
@@ -50,7 +52,7 @@ File không có trong bảng: không làn nào sửa; cần thì ghi vào tóm t
 
 ## Tên dùng chung (để các làn xây song song mà không chờ nhau)
 
-Bổ sung cho "Dữ kiện chung" của `plan/xero/PLAN.md` (DocType, field, hàm của client nằm ở đó).
+Bổ sung cho "Dữ kiện chung" của `plan/done/xero/PLAN.md` (DocType, field, hàm của client nằm ở đó).
 
 | Thứ | Tên | Làn viết | Làn dùng |
 |---|---|---|---|
@@ -89,8 +91,8 @@ Cách chọn: với mỗi làn lấy bước đầu tiên còn `TODO` mà mọi 
 ## Lời nhắc khởi động (dán vào bất kỳ agent nào, chỉ đổi chữ cái của làn)
 
 ```
-Read AGENTS.md, plan/overview.md, plan/xero/PLAN.md and plan/xero/board/README.md.
-You are lane A. Open plan/xero/board/lane-a.md, do the first step that is TODO and not blocked,
+Read AGENTS.md, plan/overview.md, plan/done/xero/PLAN.md and plan/done/xero/board/README.md.
+You are lane A. Open plan/done/xero/board/lane-a.md, do the first step that is TODO and not blocked,
 set its status in that file, give the short summary, then stop and wait for "next".
 Edit only the files your lane owns.
 ```

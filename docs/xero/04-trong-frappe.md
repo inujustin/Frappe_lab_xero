@@ -8,7 +8,7 @@ Nhãn độ tin cậy: xem `00-README.md`. Code của ta (đường dẫn dướ
 
 1. Database của ta và Xero **không chung được một transaction**. Nên request chỉ ghi "ý định" (một dòng **outbox**: hộp thư đi) cùng lúc với tài liệu; một **background job** (việc chạy nền) gửi nó sau.
 2. Job có thể chạy hai lần, chạy muộn, chết giữa chừng. Nó an toàn nhờ **hỏi Xero trước khi tạo** và nhờ khóa dòng outbox.
-3. Khung của luồng này (outbox + job) **đã được viết** trong lab, chưa ai chạy. Hôm nay nó gọi một client thế chỗ thay cho Xero; kế hoạch chỉ dùng **Xero thật**, nên client đó bị gỡ ở P1 (`plan/xero/PLAN.md`).
+3. Khung của luồng này (outbox + job) **đã được viết** trong lab, chưa ai chạy. Hôm nay nó gọi một client thế chỗ thay cho Xero; kế hoạch chỉ dùng **Xero thật**, nên client đó bị gỡ ở P1 (`plan/done/xero/PLAN.md`).
 4. Để lên Xero thật thiếu năm mảnh: client HTTP thật, settings + tenant, custom field trên DocType ERPNext, event của Sales Invoice, sweeper (job quét định kỳ).
 5. Luật của dự án đã quyết sẵn phần lớn hình dạng: gọi Xero chỉ trong `tasks/`, HTTP chỉ dựng trong `integrations/xero/`, không sửa code ERPNext.
 

@@ -52,8 +52,8 @@ The one exception: when the human's own prompt asks you to change the agent kit 
   ```
 
 ### A7. Two plan documents, no step lists
-- `plan/overview.md`: the one general plan file. It says which plan is in force and how to read the rest. `plan/general/OVERVIEW.md` (goals, decisions, the tracks and their order) and `plan/general/INIT.md` (the structure of the system and the app, and the skeleton that comes before feature work) are the earlier lab plan. Read them when you need to know where a request fits or where a file belongs; they authorise nothing by themselves.
-- `plan/xero/PLAN.md`, while "Where we are" in `plan/overview.md` marks it current, is the plan in force: its own short rules and a table of facts every session builds against. Read it before any work in this project. Everything under `plan/general/` (including `SPRINT.md`) is parked and not in force.
+- `plan/overview.md`: the one general plan file. It says which plan is in force and how to read the rest. `plan/general/OVERVIEW.md` (goals, decisions, the tracks and their order) and `plan/general/INIT.md` (the structure of the system and the app, and the skeleton that comes before feature work) are the lab plan, in force while "Where we are" in `plan/overview.md` marks it current. Read them when you need to know where a request fits or where a file belongs; they authorise nothing by themselves.
+- `plan/done/` holds finished plans, kept for reference and not in force. `plan/done/xero/PLAN.md` is the Xero integration plan (demoed 2026-10-12): its table of facts and business rules still describe the Xero code, so read it before changing that code. Do not work from a plan under `plan/done/` and do not update status in it.
 - A track may have a guide, `plan/general/TRACK-<letter>.md`, written when the human asks for one: the stages of that track, where to start reading, and how to walk the human through it. When working on a track that has a guide, read it first and follow its method.
 - Do not edit them and do not write other plan files unless the human's prompt asks.
 - If what the human asks contradicts a decision in it, say so before building.
@@ -155,7 +155,7 @@ If the human's own prompt already contains the exact command and tells you to ru
 ### A17. "What next?": say what can run in parallel
 The human often works with several sessions at once and often asks what to do next. Whenever you answer that question, propose next steps, or write or update a plan file, show what can go on at the same time, so the human can speed up by opening more sessions.
 
-- The status tables are a help, not a duty. "Where we are" in `plan/overview.md` and the Status section of the plan in force or of a track guide (`plan/xero/PLAN.md`, `plan/general/TRACK-<letter>.md`) record progress. Look at them when the question is about the project as a whole (which track, which stage, what is left) or when you have no context from the chat. For a small "what next" inside work already under way, answer from the chat and skip them.
+- The status tables are a help, not a duty. "Where we are" in `plan/overview.md` and the Status section of the plan in force or of a track guide (`plan/general/OVERVIEW.md`, `plan/general/TRACK-<letter>.md`) record progress. Look at them when the question is about the project as a whole (which track, which stage, what is left) or when you have no context from the chat. For a small "what next" inside work already under way, answer from the chat and skip them.
 - Update a status row only when the human asks you to mark something, or says a stage or track is finished. Otherwise leave the tables alone; do not update them after every piece of work.
 - Work out the dependencies first. A piece of work waits for another when it needs that work's result, or when both would edit the same file. Everything else is parallel.
 - Say it plainly, in the answer itself and not only in a plan file:
@@ -203,6 +203,13 @@ When the human asks to learn something (how a mechanism works, why something is 
 - The evidence rules still hold (A9, B7): brief does not mean unverified. What you did not confirm goes in one line at the end.
 - A written trace note may be longer than the chat answer; the chat answer stays short and points to the note.
 
+### A20. Plans and knowledge files: brief, a picture first, practice over reading
+Added by the human on 2026-10-13. The human learns by doing and cannot read long documents.
+- A new plan or knowledge file is short enough to read in a few minutes. Start with one text diagram, then a small table or a few lines, then the practical step or experiment the human can run.
+- Point to an existing file instead of repeating it. No sections added "for completeness".
+- Ask the human often: when scope, depth or a choice is open, ask before writing, with options to pick from and the one you recommend first. This is in addition to A15.
+- This applies to new writing. Existing long files stay as reference; do not shorten them unless asked.
+
 ## Part B: frappe-lab project rules
 
 ### B1. Project
@@ -213,6 +220,7 @@ Layout: this repo is the workspace root. The bench is `frappe-bench/` (bind-moun
 - `lab_core/api/` (BFF endpoints), `lab_core/tasks/` (background jobs), `lab_core/overrides/` (changes to the behaviour of Frappe, ERPNext or CRM, and nothing else), `lab_core/integrations/xero/` (Xero client and OAuth).
 - Frappe modules as domains: `lab_core/lab_core/` ("Lab Core") and `lab_core/lab_xero/` ("Lab Xero"). A new module is created by the human in Desk, like a DocType.
 Do not create another app. Code of one part reaches another only through its public functions, never its internals (for example, nothing outside `integrations/xero/` builds a Xero HTTP request).
+One exception, added by the human on 2026-10-13: `oauth_lab/` at the repo root is a separate practice project outside Frappe (FastAPI, Spring Boot, React, its own compose file; plan: `plan/general/TRACK-N.md`). There you may write code and create or edit that project's own dependency manifests, but never a lockfile; the Frappe-specific rules of B2a–B9 do not apply to it, and nothing in it imports or calls into `frappe-bench/`. Everything in Part A still holds: the human runs every command, install and build, and verifies each package and version before it is installed (A6).
 Notes: `docs/traces/` (trace notes), `docs/adr/` (decisions), `docs/runbooks/` (human-run guides).
 
 Reference only: `docs/refer/` holds the draft architecture handbook of the upcoming project (written in Vietnamese; the folder is kept on this machine only and is not committed). This lab exists to learn and try things so that project goes smoothly, so the handbook explains why some choices here look the way they do. It is a draft of another project, not rules for this one:

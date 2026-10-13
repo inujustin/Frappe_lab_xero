@@ -1,5 +1,9 @@
 # Kế hoạch tích hợp Frappe/ERPNext ↔ Xero
 
+> **Đã lưu trữ ngày 2026-10-13 (chuyển từ `plan/xero/` sang `plan/done/xero/`).** Giai đoạn 1 đã được demo ngày 2026-10-12 và code đã đẩy lên git. File này **không còn hiệu lực**; nội dung giữ nguyên như lúc đang làm, nên các chữ "đang có hiệu lực", "CURRENT" bên dưới là của lúc đó. Mục "Dữ kiện chung" vẫn mô tả đúng code Xero: đọc nó trước khi sửa code đó.
+>
+> **Chưa làm, tiếp tục ở kế hoạch chung:** PE (lỗi và response chung) → track A2; P4 (`@xero_atomic`, SAGA) và P3 (mất kết nối) → track K/L của `plan/general/OVERVIEW.md`; làn W3–W5 (sửa `BAO-CAO.md` sau khi chạy thật) còn `TODO`. Trả tiền, credit note và cancel → void: code đã viết, chưa có bằng chứng chạy thật được ghi lại.
+
 Kế hoạch đang có hiệu lực (xem `plan/overview.md`). Viết ngày 2026-10-12. File này **tự đủ**: không cần mở `plan/general/` để làm việc. Kiến thức đi kèm nằm trọn trong `docs/xero/` (bắt đầu ở `docs/xero/00-README.md`; hai luồng của đề bài ở `docs/xero/09`).
 
 File này chỉ nói: làm gì, thứ tự nào, ai làm, xong khi nào. Các phiên code (Codex) tự quyết chi tiết bên trong mỗi phase; mục "Dữ kiện chung" là thứ duy nhất mọi phiên phải giữ giống nhau.
@@ -218,7 +222,7 @@ Webhook (cần URL công khai); Payment Entry → Payment; SAGA bền qua outbox
 
 ## Cách chạy các phiên
 
-**Giai đoạn 1 được chia sẵn thành các làn không đụng file của nhau: `plan/xero/board/README.md`.** Mọi agent, dù một hay ba phiên, làm việc từ bảng đó: nhận một làn, làm một bước, ghi trạng thái vào file làn của mình, dừng. Khi con người hỏi "làm gì bây giờ?", câu trả lời lấy từ bảng đó.
+**Giai đoạn 1 được chia sẵn thành các làn không đụng file của nhau: `plan/done/xero/board/README.md`.** Mọi agent, dù một hay ba phiên, làm việc từ bảng đó: nhận một làn, làm một bước, ghi trạng thái vào file làn của mình, dừng. Khi con người hỏi "làm gì bây giờ?", câu trả lời lấy từ bảng đó.
 
 ```text
 Làn H (bạn)  P0, rồi chạy các DEMO           Làn A  đường chính của P1        Làn B  field, endpoint, nút

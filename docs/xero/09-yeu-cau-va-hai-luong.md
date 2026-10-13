@@ -1,6 +1,6 @@
 # 09. Yêu cầu thật và hai luồng phải demo
 
-Email giao việc: `main-request.png` (cùng thư mục). Kế hoạch làm: `plan/xero/PLAN.md`. File này giải thích **hai luồng đó hoạt động thế nào**, từ đầu tới cuối.
+Email giao việc: `main-request.png` (cùng thư mục). Kế hoạch làm: `plan/done/xero/PLAN.md`. File này giải thích **hai luồng đó hoạt động thế nào**, từ đầu tới cuối.
 
 Nhãn: xem `00-README.md`. Tên field của Sales Order là [S]: hôm nay đã xác nhận sự có mặt trong `frappe-bench/apps/erpnext/erpnext/selling/doctype/sales_order/sales_order.json` và `sales_order_item/sales_order_item.json` (chỉ sự có mặt, không kiểm tra kiểu). Field của Xero là [G] trừ khi ghi khác.
 
@@ -57,7 +57,7 @@ Mapping (ánh xạ field):
 | `currency` | `CurrencyCode` | phải được bật trong organisation |
 | `items[].description` / `item_name`, `qty`, `rate` | `LineItems[].Description`, `Quantity`, `UnitAmount` | |
 | — | `LineItems[].AccountCode`, `TaxType` | lấy từ `Lab Xero Settings` (mặc định) cho demo; về sau là bảng mapping. **Giá trị cho Demo Company (Global), đã xác nhận ngày 2026-10-12** bằng màn hình Chart of accounts và `GET /TaxRates` trong API Explorer: `AccountCode` = `200` (Sales, loại Revenue), `TaxType` = `NONE` ("Tax Exempt", 0%, áp được cho doanh thu, đang ACTIVE) |
-| `grand_total`, `total_taxes_and_charges` | `Total`, `TotalTax` | **không gửi**: trong demo thuế và tổng do Xero tính; bảng thuế và chiết khấu của ERPNext không sang Xero (luật 3 trong `plan/xero/PLAN.md`). Vì vậy đơn demo không có thuế phía ERPNext |
+| `grand_total`, `total_taxes_and_charges` | `Total`, `TotalTax` | **không gửi**: trong demo thuế và tổng do Xero tính; bảng thuế và chiết khấu của ERPNext không sang Xero (luật 3 trong `plan/done/xero/PLAN.md`). Vì vậy đơn demo không có thuế phía ERPNext |
 | `docstatus` 1 | `Status` = `AUTHORISED` | quyết định tạm |
 | `docstatus` 2 (cancel) | `Status` = `VOIDED` | bị Xero chặn nếu đã có payment/credit |
 

@@ -1,6 +1,6 @@
 # Làn A: đường chính của chiều đi (P1)
 
-Luật của bảng: `README.md` cùng thư mục. Kế hoạch và luật nghiệp vụ: `plan/xero/PLAN.md` (luật 1–5, 9). Kiến thức: `docs/xero/09`, `03`, `02`.
+Luật của bảng: `README.md` cùng thư mục. Kế hoạch và luật nghiệp vụ: `plan/done/xero/PLAN.md` (luật 1–5, 9). Kiến thức: `docs/xero/09`, `03`, `02`.
 
 | Bước | Việc | Phụ thuộc | Trạng thái |
 |---|---|---|---|

@@ -4,7 +4,7 @@ Viết ngày 2026-10-11 để đọc offline. Frappe 16.51.0 (`frappe-bench/apps
 
 Mọi đường dẫn framework bắt đầu từ `frappe-bench/apps/frappe/` trừ khi nó bắt đầu bằng `erpnext/` hoặc `lab_core/`.
 
-> **Ghi chú 2026-10-12.** Nhiều file ở đây (`03`, `10`, `12`, `13`, `15`, `18`, `19`, `90`) nhắc tới một "Xero giả" / "client giả": đó là client thế chỗ của sprint, còn nằm trong code (`lab_core/integrations/xero/client.py`). Kế hoạch tích hợp Xero (`plan/xero/PLAN.md`) **chỉ dùng Xero thật** và gỡ client đó ở phase P1. Cơ chế mà các file này giải thích (outbox, khóa dòng, hỏi trước khi tạo, SAGA) vẫn đúng; các thí nghiệm "tạo một note có title `fail` / `timeout`" sẽ không còn chạy được sau khi nó bị gỡ.
+> **Ghi chú 2026-10-12.** Nhiều file ở đây (`03`, `10`, `12`, `13`, `15`, `18`, `19`, `90`) nhắc tới một "Xero giả" / "client giả": đó là client thế chỗ của sprint, còn nằm trong code (`lab_core/integrations/xero/client.py`). Kế hoạch tích hợp Xero (`plan/done/xero/PLAN.md`) **chỉ dùng Xero thật** và gỡ client đó ở phase P1. Cơ chế mà các file này giải thích (outbox, khóa dòng, hỏi trước khi tạo, SAGA) vẫn đúng; các thí nghiệm "tạo một note có title `fail` / `timeout`" sẽ không còn chạy được sau khi nó bị gỡ.
 
 ## Tin mỗi dòng đến mức nào
 
@@ -53,6 +53,7 @@ cuối cùng:                    90 self-check (câu hỏi, đáp án ở cuối
 | `19-ordering-and-stack-pitfalls.md` | A, D, E, J | Vừa, **[S]** ở phía Frappe. Thứ tự trong một request, một document event, quanh commit; vì sao job không có thứ tự và năm cách tạo ra thứ tự; giả định sai về bên thứ ba; bẫy theo từng tầng của stack. |
 | `20-transaction-handling.md` | J, E, D | Ngắn, tổng hợp. Một mô hình cho mọi tình huống transaction: hỏng trước hay sau đường commit; response đã đi mà job hoặc hook hỏng thì làm gì; năm luật; bảng công cụ. Đọc sau `02` và `03`. |
 | `21-bench-and-toolchain.md` | runtime của lab | Vừa, **[S]** cho Docker và Frappe, **[G]** cho bên trong CLI. bench tìm Python (virtualenv `env/`) và Node/yarn (PATH) thế nào; cái gì chạy ở host, cái gì ở container; các file cấu hình của một bench; so với kubectl. |
+| `22-ban-do-chu-de-va-tai-lieu-doc.md` | tất cả | Bản đồ. Danh sách muốn học so với các track; sáu chỗ kế hoạch gốc không còn khớp dự án; bảy chủ đề chưa có kiến thức (frontend, Clean Architecture, event-driven, OpenTelemetry, pre-commit, kiểm lệch DDL); thứ cần tài khoản ngoài; URL tài liệu gốc (toàn bộ **[G]**). |
 | `90-self-check.md` | tất cả | Các câu hỏi để trả lời từ trí nhớ. |
 
 ## Cố ý không đề cập

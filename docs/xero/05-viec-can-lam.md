@@ -1,6 +1,6 @@
 # 05. Việc cần làm: bảng điều khiển
 
-Một trang để mở mỗi khi ngồi vào bàn. **Kế hoạch đầy đủ là `plan/xero/PLAN.md`**; trang này chỉ nhắc: đang ở đâu, việc kế tiếp của bạn là gì.
+Một trang để mở mỗi khi ngồi vào bàn. **Kế hoạch đầy đủ là `plan/done/xero/PLAN.md`**; trang này chỉ nhắc: đang ở đâu, việc kế tiếp của bạn là gì.
 
 > **0 đồng.** Chỉ Demo Company + Web app bậc Starter. Không nhập thẻ, không nâng bậc, không Custom connection, không tunnel trả phí. Bước nào đòi tiền thì dừng (`01`, "Luật 0 đồng").
 >
@@ -35,10 +35,10 @@ Không viết test tự động cho demo này; mỗi phase được kiểm bằn
 
 Làm theo thứ tự này, vì cái đầu là rủi ro lớn nhất và không gì chạy được khi chưa có nó:
 
-Cấu hình nằm trong code; việc của bạn chỉ là những thứ code không làm được. Danh sách đầy đủ và trạng thái: `plan/xero/board/lane-h.md`.
+Cấu hình nằm trong code; việc của bạn chỉ là những thứ code không làm được. Danh sách đầy đủ và trạng thái: `plan/done/xero/board/lane-h.md`.
 
 1. Login Xero → mở Demo Company → ghi lại **quốc gia** và **tiền tệ** (`01`).
-2. Desk: tạo ba DocType `Lab Xero Outbox`, `Lab Xero Settings`, `Lab Xero Credit Note` (field: `plan/xero/PLAN.md`, "Dữ kiện chung"; chỉ các field của giai đoạn 1). **Việc duy nhất phải làm trong Desk.**
+2. Desk: tạo ba DocType `Lab Xero Outbox`, `Lab Xero Settings`, `Lab Xero Credit Note` (field: `plan/done/xero/PLAN.md`, "Dữ kiện chung"; chỉ các field của giai đoạn 1). **Việc duy nhất phải làm trong Desk.**
 3. `developer.xero.com` → New app → **Web app**, với Redirect URI cố định mà agent ghi ra (bước B0 của bảng việc).
 4. Chạy các lệnh agent đưa để đặt `client_id`, `client_secret`, mã tài khoản doanh thu và mã thuế vào site config; rồi migrate. Code tự tạo Connected App `xero` và điền Settings.
 5. Mở Connected App `xero`, bấm Connect, chọn Demo Company.
@@ -51,7 +51,7 @@ Trong lúc đó Codex có thể bắt đầu viết P1, nhưng **chỉ chạy th
 
 ## Luật nghiệp vụ: đã quyết, không chờ xác nhận
 
-Demo dùng mười luật trong `plan/xero/PLAN.md`, "Luật nghiệp vụ của demo". Bốn lựa chọn đáng nhắc khi trình bày, vì dự án thật có thể chọn khác:
+Demo dùng mười luật trong `plan/done/xero/PLAN.md`, "Luật nghiệp vụ của demo". Bốn lựa chọn đáng nhắc khi trình bày, vì dự án thật có thể chọn khác:
 
 | Lựa chọn của demo | Lựa chọn còn lại |
 |---|---|

@@ -1,6 +1,6 @@
 # Kịch bản demo: Sales Order ↔ Xero
 
-Ba cảnh, khoảng mười phút. Kế hoạch: `plan/xero/PLAN.md`. Bản nghiên cứu đi kèm: `BAO-CAO.md`.
+Ba cảnh, khoảng mười phút. Kế hoạch: `plan/done/xero/PLAN.md`. Bản nghiên cứu đi kèm: `BAO-CAO.md`.
 
 **Mức xác nhận:** viết ngày 2026-10-12 từ code và kế hoạch, **trước khi demo được chạy thật**. Kết nối Xero đã thử thành công; ba cảnh dưới đây thì chưa. Sau lần chạy thật đầu tiên, sửa lại file này theo những gì thực sự xảy ra (bước W3). Các chỗ chưa chắc được đánh dấu **(chưa thử)**.
 

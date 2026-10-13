@@ -1,6 +1,6 @@
 # Làn C: chiều về, trạng thái invoice và credit note (P2)
 
-Luật của bảng: `README.md` cùng thư mục. Kế hoạch: `plan/xero/PLAN.md` (luật 6–9, và hai dòng "kéo về" của bảng Idempotency). Kiến thức: `docs/xero/09`, hai mục "nửa về" và "Luồng 2".
+Luật của bảng: `README.md` cùng thư mục. Kế hoạch: `plan/done/xero/PLAN.md` (luật 6–9, và hai dòng "kéo về" của bảng Idempotency). Kiến thức: `docs/xero/09`, hai mục "nửa về" và "Luồng 2".
 
 Không đụng `integrations/` (chỉ **gọi** client của làn A), `tasks/xero_sync.py`, `hooks.py`.
 

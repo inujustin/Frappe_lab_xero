@@ -85,6 +85,7 @@ Mỗi track là một nhóm câu hỏi cần trả lời bằng cách trace, sau
 | K. Xero | OAuth với Xero, sync Customer/Invoice/Payment, idempotency, outbox. |
 | L. Guardrails (hàng rào an toàn) | Permission guard, tách hook theo domain, structural lint, OpenTelemetry (chuẩn thu thập trace/metric), theo dõi sự cố. |
 | M. Tối ưu và các kiểu API ít gặp | Phục vụ mục tiêu chính (tích hợp Xero), không phải mục tiêu riêng. Frappe có gì thay cho GraphQL và gRPC, và khi nào chúng mới đáng dùng. Các tầng cache, đọc/ghi database không N+1, bulk, index, read replica, rate limit. Đo bằng Recorder trước khi tối ưu. Với Xero: batch write, `If-Modified-Since`, đồng hồ rate limit dùng chung, cache dữ liệu tham chiếu. Bản đồ: `docs/knowledge/15-performance-and-api-styles.md`. |
+| N. OAuth từ lõi (thêm ngày 2026-10-13) | Hiểu OAuth tới mức tự dựng được cả hai đầu, bằng một dự án riêng **ngoài Frappe** trong `oauth_lab/`: bên cấp quyền viết tay bằng FastAPI, client bằng Spring Boot, frontend React, mỗi cái một container. Thử với Google thật trước, trace `Connected App` của Frappe, rồi các kịch bản đã gặp trong đợt Xero (state, redirect URI, refresh, scope, đăng nhập so với ủy quyền, secret, tenant) và phần mở rộng (PKCE, client credentials, dạng token, thu hồi). Cuối cùng nối Frappe vào server tự dựng. Hướng dẫn: `TRACK-N.md`. |
 
 ## Order (Thứ tự)
 1. Dựng lab, `lab_core` có trên site, vỏ SPA tại `/lab` (`docs/runbooks/new-apps.md`).
@@ -94,6 +95,7 @@ Mỗi track là một nhóm câu hỏi cần trả lời bằng cách trace, sau
 5. K: Xero, đặt trên E (job), B (OAuth) và L (outbox, guard).
 6. Observability (khả năng quan sát hệ thống) và phần so sánh SAGA phân tán. Trước đó, SAGA kiểu orchestration (điều phối tập trung) trên outbox được làm ngay trong K, khi có luồng hai bước đầu tiên: `docs/knowledge/13-saga.md`.
 7. M: làm xen kẽ, từng mục một, khi một luồng thật cho thấy cần (đo trước). Phần của Xero trong M đi cùng K.
+8. N: độc lập với mọi track khác cho tới stage cuối của nó (chỉ đụng `oauth_lab/`), nên làm được bất cứ lúc nào; nó bổ trợ trực tiếp cho B (auth). Stage cuối (nối về Frappe) đi sau B.
 
 Ghi chú đọc kèm cho A2 (dạng lỗi thống nhất, hook `after_request`): `docs/knowledge/14-error-handling.md`. Cho phần "API docs, Swagger/Postman" của A: `docs/knowledge/16-api-docs-swagger.md`.
 

@@ -1,6 +1,6 @@
 # 10. `@xero_atomic`: demo có SAGA và không SAGA, trên Xero thật
 
-Phần thêm của kế hoạch (P4 trong `plan/xero/PLAN.md`), làm ở **mức demo**: một luồng, một lỗi, hai chế độ. Chạy trên Xero thật (Demo Company); không có client thế chỗ nào. Lý thuyết SAGA: `07`. File này là thiết kế của demo và là hợp đồng mà phiên code xây theo.
+Phần thêm của kế hoạch (P4 trong `plan/done/xero/PLAN.md`), làm ở **mức demo**: một luồng, một lỗi, hai chế độ. Chạy trên Xero thật (Demo Company); không có client thế chỗ nào. Lý thuyết SAGA: `07`. File này là thiết kế của demo và là hợp đồng mà phiên code xây theo.
 
 Nhãn: xem `00-README.md`. Phần so với Spring là kiến thức chung, không phải thứ đã trace. Chưa có dòng code nào của phần này.
 

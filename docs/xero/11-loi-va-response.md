@@ -1,6 +1,6 @@
 # 11. Lỗi và response thống nhất: "middleware" xử lý lỗi cho demo
 
-Kiến thức cho phase PE của `plan/xero/PLAN.md`. PE thuộc **giai đoạn 2**: chỉ làm sau khi tích hợp Xero (hai luồng của đề bài) đã xong, và chỉ ở mức tối thiểu: hai class lỗi mới và một hàm thêm khối `error`. Trong giai đoạn 1, điều duy nhất cần nhớ từ file này là: endpoint chỉ raise, không catch. Bản chung, rộng hơn (v1 so với v2, ba cách làm, phía frontend): `docs/knowledge/14-error-handling.md`; file này đủ để làm PE mà không cần mở nó.
+Kiến thức cho phase PE của `plan/done/xero/PLAN.md`. PE thuộc **giai đoạn 2**: chỉ làm sau khi tích hợp Xero (hai luồng của đề bài) đã xong, và chỉ ở mức tối thiểu: hai class lỗi mới và một hàm thêm khối `error`. Trong giai đoạn 1, điều duy nhất cần nhớ từ file này là: endpoint chỉ raise, không catch. Bản chung, rộng hơn (v1 so với v2, ba cách làm, phía frontend): `docs/knowledge/14-error-handling.md`; file này đủ để làm PE mà không cần mở nó.
 
 Nhãn: xem `00-README.md`. Đã đọc hôm nay: `frappe/app.py:135-212, :385-404, :443-452`, `frappe/utils/response.py:39-90`, `frappe/monitor.py:41-44` (đường dẫn từ `frappe-bench/apps/frappe/`). Phần so với .NET là kiến thức chung.
 
